@@ -9,43 +9,48 @@
         </p>
       </div>
       <div class="comment-container">
+        <table class="table bg-white">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">User Avatar</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Date Created</th>
+              <th scope="col">Likes</th>
+              <th scope="col">Delete Comment</th>
+            </tr>
+          </thead>
+          </table>
         <% p.comments.forEach(function(comment){%>
-          <table>
-            <thead>
-              <tr>
-                <th>User Avatar</th>
-                <th>User Name</th>
-                <th>Date Created</th>
-                <th>Likes</th>
-              </tr>
-            </thead>
-            <tbody>
-          <tr>
-          <td class="review-user"><img id="avatar" alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></td>
-          <td><%= comment.userName %></td>
-          <td><%= comment.createdAt.toLocaleDateString() %></td>
-            <td>Likes go here</td>
-            <td>
+          <div class="user-container">
+          <div><img id="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></div>
+          <div><%= comment.userName %></div>
+          <div><%= comment.createdAt.toLocaleDateString() %></div>
+            <div><img id="avatar" src="https://media.istockphoto.com/id/639471866/photo/red-patterned-wooden-heart-isolated-on-white-background-valentine-day.jpg?s=1024x1024&w=is&k=20&c=KWMIM-XOff33b23piyomBuaY3e5R8P5GL7YCb1X8PXo=" id="likes"></div>
+            <div>
               <% if (user?._id.equals(comment.user)) { %>
                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
+                  <button id="avatar" type="submit">X</button>
                 </form>
                 <% } %>
-            </td>
-            </tr>
-            </tbody>
-            </table>
+              </div>
+          </div>
+
           <div class="container">
+            <label>Comment : </label>
               <p>
             <%= comment.content %>
           </p>
           </div>
+          <a href="/comments/<%=comment._id%>/edit" class="btn btn-warning">Edit Comment</a>
           <%})%>
             <form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
-              <label>Add Comment:</label>
-              <textarea name="content"></textarea>
-              <input type="submit" value="Add Comment" />
+              <div class="form-group"></div>
+              <input type="comments" name="content" class="form-control" id="exampleInputPassword1" placeholder="Add Comment">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+                          
             </form>
+
       </div>
     </div>
     <% }) %>

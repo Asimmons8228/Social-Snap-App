@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<form method="POST" action="/comments/<%=comment._id%>?_method=PUT">
+
+    <input type="comments" name="content" class="form-control" id="exampleInputPassword1" placeholder="Edit Comment">
+    </div>
+    <button type="submit" class="btn btn-warning">Edit</button>
+</form>
+
+<%- include('../partials/footer') %>

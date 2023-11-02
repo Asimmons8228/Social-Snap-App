@@ -59,7 +59,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
 
   /* Adjust padding as needed */
 }
@@ -72,6 +71,8 @@ body {
 .comment-container {
   align-items: center;
     justify-content: center;
+    width: 600px;
+    border: 1px solid white;
 }
 
 #pics{
@@ -92,10 +93,36 @@ body {
 #avatar{
   border-radius: 50%;
     height: 40px;
+    width: 40px;
 }
 
 .container{
-  border: 1px white;
-  border-radius: 10px;
-  background: white;
+  display: flex ;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+#likes{
+  height: 30px;
+  width: 30px;
+}
+
+.container p {
+  padding-left: 10px;
+}
+
+.user-container{
+  display: flex;
+  justify-content: space-around;
+  width: 600px;
+  border-top: 1px solid white;
+  padding: 5px;
+}
+.pic-comment-container{
+  padding-top: 40px;
+  padding-bottom: 4;
+}
+
+.table{
+  margin: 0;
+  padding: 0;
 }

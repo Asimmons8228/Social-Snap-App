@@ -48,24 +48,22 @@ async function edit(req, res) {
 
   const comment = picture.comments.id(req.params.id);
 
-  res.render('comments/edit', { comment });
+  res.render('comments/edit', {comment});
 }
 
 async function update(req, res) {
   // Note the cool "dot" syntax to query on the property of a subdoc
   const picture = await Picture.findOne({ 'comments._id': req.params.id });
-  // Find the comment subdoc using the id method on Mongoose arrays
-  // https://mongoosejs.com/docs/subdocs.html
+
   const commentSubdoc = picture.comments.id(req.params.id);
   // Ensure that the comment was created by the logged in user
-  if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/pictures/${picture._id}`);
+  if (!commentSubdoc.user.equals(req.user._id)) return res.redirect(`/pictures/${picture._id}`);
   // Update the text of the comment
-  commentSubdoc.text = req.body.text;
+  commentSubdoc.content = req.body.content;
   try {
     await picture.save();
   } catch (e) {
     console.log(e.message);
   }
-  // Redirect back to the book's show view
   res.redirect(`/pictures`);
 }
