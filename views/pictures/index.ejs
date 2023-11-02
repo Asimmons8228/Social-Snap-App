@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+  <% pictures.forEach(function(p){%>
+    <div class="theme">
+    <div class="pic-comment-container">
+      <div class="pic-container">
+        <img id="pics" src="<%= p.piccontent %>" alt="" />
+        <p class="caption">
+          <%= p.caption %>
+        </p>
+      </div>
+      <div class="comment-container">
+        <% p.comments.forEach(function(comment){%>
+          <table>
+            <thead>
+              <tr>
+                <th>User Avatar</th>
+                <th>User Name</th>
+                <th>Date Created</th>
+                <th>Likes</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr>
+          <td class="review-user"><img id="avatar" alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></td>
+          <td><%= comment.userName %></td>
+          <td><%= comment.createdAt.toLocaleDateString() %></td>
+            <td>Likes go here</td>
+            <td>
+              <% if (user?._id.equals(comment.user)) { %>
+                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form>
+                <% } %>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+          <div class="container">
+              <p>
+            <%= comment.content %>
+          </p>
+          </div>
+          <%})%>
+            <form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
+              <label>Add Comment:</label>
+              <textarea name="content"></textarea>
+              <input type="submit" value="Add Comment" />
+            </form>
+      </div>
+    </div>
+    <% }) %>
+    </div>

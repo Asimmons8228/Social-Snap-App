@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<div class="hero-image">
+<form id="new-form" action="/pictures" method="POST">
+  <div class="card centered-card w-50">
+    <h5 class="card-header">Create Snapshot!</h5>
+  <div class="input-group mb-3" style="padding-top: 5px; padding-bottom: 10px;">
+    <input type="text" class="form-control" placeholder="Picture URL" aria-label="Provide Profile Image" name="piccontent">
+  </div>
+  <div class="input-group mb-3" style="padding-top: 5px; padding-bottom: 10px;">
+    <input type="text" class="form-control" placeholder="Picture Caption" aria-label="Provide Image Caption" name="caption">
+  </div>
+  <button class="btn btn-primary" type="submit">Submit Form</button>
+  </div>
+</form>
+</div>
+
+<%- include('../partials/footer') %>
