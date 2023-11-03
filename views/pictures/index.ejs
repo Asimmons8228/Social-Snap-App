@@ -9,7 +9,7 @@
         </p>
       </div>
       <div class="comment-container">
-        <table class="table bg-white">
+        <table class="table bg-white" id="table">
           <thead class="thead-light">
             <tr>
               <th scope="col">User Avatar</th>
@@ -36,18 +36,18 @@
           </div>
 
           <div class="container">
-            <label>Comment : </label>
+            <label class="comment-label">Comment : </label>
               <p>
             <%= comment.content %>
           </p>
           </div>
-          <a href="/comments/<%=comment._id%>/edit" class="btn btn-warning">Edit Comment</a>
+          <a href="/comments/<%=comment._id%>/edit" id="edit" class="btn btn-warning">Edit Comment</a>
           <%})%>
             <form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
               <div class="form-group"></div>
-              <input type="comments" name="content" class="form-control" id="exampleInputPassword1" placeholder="Add Comment">
+              <input type="comments" name="content" class="form-control" id="add-comment" placeholder="Add Comment">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                           
             </form>
 
