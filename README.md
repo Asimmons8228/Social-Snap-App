@@ -1,8 +1,8 @@
-<SocialSnap>
+# <SocialSnap App>
 
 A fun social media app which allows users to share images and share their thoughts in the comments section
 
-Screenshot
+# Screenshots
 
 ![Screen Shot 2023-11-06 at 8 23 14 AM](https://github.com/Asimmons8228/Social-Snap-App/assets/96853510/2cafb7eb-8ec0-4bde-a6b3-3bb90585013a)
 
@@ -31,7 +31,7 @@ More Screenshots of the All Snapshot page.
 Page dedicated to editing and updating comments.
 
 
-Technologies Used
+# Technologies Used
 
 JavaScript
 HTML
@@ -43,11 +43,11 @@ Node.JS
 Express JS
 Google API (Oauth)
 
-Getting Started
+# Getting Started
 
 Will be deployed via Heroku
 
-Next Steps
+# Next Steps
 
 -Add Likes on Photos.
 -Create user profile landing page allowing users to follow/connect with each other
