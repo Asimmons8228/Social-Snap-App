@@ -1,4 +1,4 @@
-# <SocialSnap App>
+# SocialSnap App
 
 A fun social media app which allows users to share images and share their thoughts in the comments section
 
