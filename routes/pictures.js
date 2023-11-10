@@ -9,4 +9,6 @@ router.get("/new", ensureLoggedIn, picturesCtrl.new);
 
 router.post("/", ensureLoggedIn, picturesCtrl.create);
 
+router.post("/like", ensureLoggedIn, picturesCtrl.likePicture);
+
 module.exports = router;

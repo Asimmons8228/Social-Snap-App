@@ -59,7 +59,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-
+  min-width: 310px;
   /* Adjust padding as needed */
 }
 
@@ -71,13 +71,13 @@ body {
 .comment-container {
   align-items: center;
     justify-content: center;
-    width: 600px;
+    width: 40vw;
     border: 1px solid white;
 }
 
 #pics{
-  width: 600px;
-  height: 400px;
+  width: 40vw;
+  height: 40vh;
   border-radius: 10px;
 }
 #avatar{
@@ -115,7 +115,7 @@ body {
 .user-container{
   display: flex;
   justify-content: space-around;
-  width: 600px;
+  width: 40vw;
   border-top: 1px solid white;
   padding: 5px;
   font-size: large;
@@ -129,6 +129,8 @@ body {
 .table{
   margin: 0;
   padding: 0;
+  position: relative;
+  width: 100%;
 }
 
 .edit-container{
@@ -151,14 +153,19 @@ body {
 
 #add-comment{
   border-radius: 0;  
-  width: 600px;
+  width: 40vw;
   border: 1px solid white;
 }
 
 #table{
   border: 1px solid white;
+  width: 40vw;
 }
 
 #edit{
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 480px){
+
 }

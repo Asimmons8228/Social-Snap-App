@@ -15,19 +15,9 @@ async function create(req, res) {
   console.log("PICTURE-OBJECT", req.body);
   try {
     await picture.save();
-    // profile.pname = req.user.name;
-    // const profile = await Profile.create({
-    //   pname: req.body.name,
-    //   pavatar: req.body.avatar,
-    //   user: req.body._id,
-    // })
-    // const picture = await Picture.create({
-    //   piccontent: req.body.piccontent,
-    //   caption: req.body.caption,
-    //   user: req.body._id,
-    // )};
+
     console.log(picture)
-    // Redirect to the new picture's show functionality
+
     res.redirect('/pictures');
   } catch (err) {
     // Typically some sort of validation error
@@ -42,5 +32,29 @@ function newPicture(req, res) {
     errorMsg: "",
   });
 }
+async function likePicture(req, res) {
+  const { pictureId } = req.body;
+  const userId = req.user._id; // Assuming the user is logged in
 
-module.exports = { index, create, new: newPicture };
+  try {
+    const picture = await Picture.findById(pictureId);
+
+    if (!picture) {
+      return res.status(404).json({ error: 'Picture not found' });
+    }
+
+    if (picture.likes.includes(userId)) {
+      return res.status(400).json({ error: 'User already liked the picture' });
+    }
+
+    picture.likes.push(userId);
+    await picture.save();
+
+    return res.redirect('/pictures');
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+
+module.exports = { index, create, new: newPicture, likePicture };

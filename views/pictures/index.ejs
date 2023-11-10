@@ -7,19 +7,30 @@
         <p class="caption">
           <%= p.caption %>
         </p>
+        <form action="/pictures/like" method="POST">
+          <input type="hidden" name="pictureId" value="<%= p._id %>">
+                <button class="like-btn" data-picture-id="<%= p._id %>">
+                  Like
+                </button>
+                </form>
+                <span class="likes-count">
+                  <%= p.likes.length %> likes
+                </span>
       </div>
       <div class="comment-container">
-        <table class="table bg-white" id="table">
+        <div class="table-responsive">
+        <table class="table bg-white">
           <thead class="thead-light">
             <tr>
               <th scope="col">User Avatar</th>
               <th scope="col">User Name</th>
               <th scope="col">Date Created</th>
               <th scope="col">Likes</th>
-              <th scope="col">Delete Comment</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           </table>
+          </div>
         <% p.comments.forEach(function(comment){%>
           <div class="user-container">
           <div><img id="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></div>
