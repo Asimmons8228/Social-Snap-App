@@ -3,64 +3,52 @@
     <div class="theme">
     <div class="pic-comment-container">
       <div class="pic-container">
+        <div class="picture-with-like">
         <img id="pics" src="<%= p.piccontent %>" alt="" />
+<form action="/pictures/like" method="POST">
+  <input type="image" id="avatar" class="like-btn"
+    src="https://media.istockphoto.com/id/639471866/photo/red-patterned-wooden-heart-isolated-on-white-background-valentine-day.jpg?s=1024x1024&w=is&k=20&c=KWMIM-XOff33b23piyomBuaY3e5R8P5GL7YCb1X8PXo="
+    alt="Like" />
+  <input type="hidden" name="pictureId" value="<%= p._id %>">
+</form>
+        </div>
         <p class="caption">
           <%= p.caption %>
         </p>
-        <form action="/pictures/like" method="POST">
-          <input type="hidden" name="pictureId" value="<%= p._id %>">
-                <button class="like-btn" data-picture-id="<%= p._id %>">
-                  Like
-                </button>
-                </form>
+            <div class="picture-with-like">
                 <span class="likes-count">
                   <%= p.likes.length %> likes
                 </span>
+            </div>
       </div>
       <div class="comment-container">
-        <div class="table-responsive">
-        <table class="table bg-white">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">User Avatar</th>
-              <th scope="col">User Name</th>
-              <th scope="col">Date Created</th>
-              <th scope="col">Likes</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          </table>
-          </div>
+        
         <% p.comments.forEach(function(comment){%>
           <div class="user-container">
-          <div><img id="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></div>
-          <div><%= comment.userName %></div>
-          <div><%= comment.createdAt.toLocaleDateString() %></div>
-            <div><img id="avatar" src="https://media.istockphoto.com/id/639471866/photo/red-patterned-wooden-heart-isolated-on-white-background-valentine-day.jpg?s=1024x1024&w=is&k=20&c=KWMIM-XOff33b23piyomBuaY3e5R8P5GL7YCb1X8PXo=" id="likes"></div>
-            <div>
+          <div class="user_info"><img id="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></div>
+          <div class="user_info"><%= comment.userName %>: </div>
+          <div class="user_info"><p><%= comment.content %></p></div>
+            <div></div>
+            <div class="user_info">
               <% if (user?._id.equals(comment.user)) { %>
                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button id="avatar" type="submit">X</button>
+                  <input type="image" id="avatar"
+                    src="https://i.fbcd.co/products/resized/resized-750-500/de18ae7d25cea00a569f391100ae56d990105791a99a2d42f35d84477a869d68.webp"
+                    alt="Delete" />
                 </form>
                 <% } %>
               </div>
           </div>
-
-          <div class="container">
-            <label class="comment-label">Comment : </label>
-              <p>
-            <%= comment.content %>
-          </p>
-          </div>
           <a href="/comments/<%=comment._id%>/edit" id="edit" class="btn btn-warning">Edit Comment</a>
           <%})%>
-            <form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
-              <div class="form-group"></div>
-              <input type="comments" name="content" class="form-control" id="add-comment" placeholder="Add Comment">
-              </div>
-              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                          
-            </form>
+<form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
+  <div class="form-group">
+    <div class="position-relative">
+      <input type="comments" name="content" class="form-control" id="add-comment" placeholder="Add Comment">
+      <button type="submit" class="btn btn-primary position-absolute end-0 bottom-0" id="submit">Submit</button>
+    </div>
+  </div>
+</form>
 
       </div>
     </div>
