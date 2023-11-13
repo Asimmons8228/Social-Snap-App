@@ -27,30 +27,35 @@
           <div class="user-container">
           <div class="user_info"><img id="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"></div>
           <div class="user_info"><%= comment.userName %>: </div>
-          <div class="user_info"><p><%= comment.content %></p></div>
+          <div class="user_info" id="comment-data"><p><%= comment.content %></p></div>
             <div></div>
-            <div class="user_info">
+            <div class="delete-btn">
               <% if (user?._id.equals(comment.user)) { %>
                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <input type="image" id="avatar"
+                  <input type="image" id="delete-avatar"
                     src="https://i.fbcd.co/products/resized/resized-750-500/de18ae7d25cea00a569f391100ae56d990105791a99a2d42f35d84477a869d68.webp"
                     alt="Delete" />
                 </form>
                 <% } %>
               </div>
-          </div>
-          <a href="/comments/<%=comment._id%>/edit" id="edit" class="btn btn-warning">Edit Comment</a>
-          <%})%>
-<form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
-  <div class="form-group">
-    <div class="position-relative">
-      <input type="comments" name="content" class="form-control" id="add-comment" placeholder="Add Comment">
-      <button type="submit" class="btn btn-primary position-absolute end-0 bottom-0" id="submit">Submit</button>
-    </div>
-  </div>
-</form>
+              <% if (user?._id.equals(comment.user)) { %>
+              <div class="edit-btn">
+              <a href="/comments/<%=comment._id%>/edit" id="edit" class="btn btn-warning btn-xs mb-0 pb-0">Edit</a>
+              </div>
+              <% } %>
+            </div>
+              <%})%>
+              <form id="add-comment-form" method="POST" action="/pictures/<%=p._id %>/comments">
+                <div class="form-group">
+                  <div class="position-relative">
+                    <input type="comments" name="content" class="form-control" id="add-comment" placeholder="Add Comment">
+                    <button type="submit" class="btn btn-primary btn-sm position-absolute end-0 bottom-0" id="submit">Submit</button>
+                  </div>
+                </div>
+              </form>
 
       </div>
     </div>
     <% }) %>
     </div>
+    <%- include('../partials/footer') %>

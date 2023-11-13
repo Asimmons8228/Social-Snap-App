@@ -56,5 +56,31 @@ async function likePicture(req, res) {
   }
 }
 
+async function unlikePicture(req, res) {
+  const { pictureId } = req.body;
+  const userId = req.user._id; // Assuming the user is logged in
 
-module.exports = { index, create, new: newPicture, likePicture };
+  try {
+    const picture = await Picture.findById(pictureId);
+
+    if (!picture) {
+      return res.status(404).json({ error: 'Picture not found' });
+    }
+
+    if (!picture.likes.includes(userId)) {
+      return res.status(400).json({ error: 'User has not liked the picture' });
+    }
+
+    // Find the index of the user's like and remove it from the array
+    const likeIndex = picture.likes.indexOf(userId);
+    picture.likes.splice(likeIndex, 1);
+
+    await picture.save();
+
+    return res.redirect('/pictures');
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+module.exports = { index, create, new: newPicture, likePicture, unlikePicture };
