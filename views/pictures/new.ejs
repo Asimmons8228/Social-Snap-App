@@ -3,10 +3,12 @@
 <form id="new-form" action="/pictures" method="POST">
   <div class="card centered-card w-50">
     <h5 class="card-header">Create Snapshot!</h5>
-    <div class="mb-3" style="padding-top: 5px; padding-bottom: 10px;">
-      <label class="form-label" for="formFile">Upload Image</label>
-      <input type="file" class="form-control" id="formFile" name="image" placeholder="Choose Image File">
-    </div>
+<div class="mb-3" style="padding-top: 5px; padding-bottom: 10px;">
+  <label class="form-label" for="formFile">Upload Image</label>
+  <input type="file" class="form-control" id="formFile" name="image" title=" ">
+  <input type="text" readonly class="form-control" placeholder="Choose Image File"
+    style="pointer-events: none; background-color: #ffffff; color: #000000; border: 1px solid #ced4da; border-radius: 0.25rem;">
+</div>
   <div class="input-group mb-3" style="padding-top: 5px; padding-bottom: 10px;">
     <input type="text" class="form-control" placeholder="Picture URL" aria-label="Provide Profile Image" name="piccontent">
   </div>
