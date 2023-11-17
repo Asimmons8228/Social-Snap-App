@@ -1,12 +1,23 @@
 var createError = require("http-errors");
 var express = require("express");
-// var multer = require("multer");
+const multer = require("multer");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
 var passport = require("passport");
 var methodOverride = require("method-override");
+
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads')
+//   },
+//   filename: (req, file, cb) => { 
+//     console.log(file)
+//     cb(null, Date.now() + path.extname(file.originalname))
+//   }
+//   })
+
 
 require("dotenv").config();
 // connect to the database with AFTER the config vars are processed
