@@ -25,8 +25,8 @@ const commentSchema = new Schema(
 
 
 const picSchema = new Schema({
-  piccontent: { type: String, required: true },
-  caption: { type: String, required: true },
+  piccontent: { type: String, required :true},
+  caption: { type: String, required: true},
   likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
   user: { type: Schema.Types.ObjectId, ref: "User", required: true, },
   comments: [commentSchema],
